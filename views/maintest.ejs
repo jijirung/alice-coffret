@@ -1,0 +1,378 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Alice_Coffret</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link href="/public/css/style.css" rel="stylesheet" >
+</head>
+
+<body>
+    <div class="header">
+        <% include ./header.ejs %>
+    </div>
+    <!-- 이달의 상품 -->
+    <div class="content">
+        <h2>이달의 상품</h2>
+        <section>
+            <div class="wrapper">
+                <div class="banner"></div>
+                <div class="bxslider">
+                    <% for(var i=0; i< session.bannerImg.list.length; i++){ 
+                        imgList=session.bannerImg.list[i]
+                    %>
+                    <div>
+                        <h3><%= imgList.product_name %></h3>
+                        <div class="tag_box">
+                            <% for(var j=0; j< imgList.tag.length; j++){
+                                var tag=imgList.tag[j]
+                                var tag_code
+                                if(tag=="봄"){
+                                    tag_code="tag_spring"
+                                }else if(tag=="여름"){
+                                    tag_code="tag_summer"
+                                }else if(tag=="가을"){
+                                    tag_code="tag_fall"
+                                }else if(tag=="겨울"){
+                                    tag_code="tag_winter"
+                                }else if(tag=="큐트"){
+                                    tag_code="tag_cute"
+                                }else if(tag=="화려"){
+                                    tag_code="tag_brilliant"
+                                }else if(tag=="우아"){
+                                    tag_code="tag_luxury"
+                                }else if(tag=="심플"){
+                                    tag_code="tag_simple"
+                                } %>
+                            <span class=<%= tag_code %>><%= imgList.tag[j] %></span>
+                            <% } %>
+                        </div>
+                        <img alt="" style="width: 100%;" src=<%=imgList.thumbnail %> />
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+    </div>
+    </section>
+    <div id="design_list_container">
+        <div data-reactroot="" class="App">
+            <div>
+                <div class="design_title">
+                    <h2>새로운 ITEM</h2>
+                    <h8>따끈 따끈 신상 아이템!</h8>
+                </div>
+                <div class="projectItem_Container">
+                    <% for(var i=0; i< session.newItem.list.length; i++){ 
+                        itemList=session.newItem.list[i]
+                    %>
+                    <div class="projectItem_Column">
+                        <a class="projectItem_ProjectItemCard" href="#">
+                            <img class="projectItem_ProjectItemImage" alt="My Image" src=<%=itemList.thumbnail %> />
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t"><%=itemList.product_name %></h1>
+                                    <p class="projectItem_FundingTitle_w"><%=itemList.userid %></p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo"><span class="projectItem_FundingInfo_c"></span>
+                                    <div class="projectItem_FundingInfo_m">
+                                        <span class="projectItem_FundingInfo_money">
+                                            가격 : &nbsp;<%=itemList.price %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <% for(var j=0; j< itemList.tag.length; j++){
+                                        var tag=itemList.tag[j]
+                                        var tag_code
+                                        if(tag=="봄"){
+                                            tag_code="tag_spring"
+                                        }else if(tag=="여름"){
+                                            tag_code="tag_summer"
+                                        }else if(tag=="가을"){
+                                            tag_code="tag_fall"
+                                        }else if(tag=="겨울"){
+                                            tag_code="tag_winter"
+                                        }else if(tag=="큐트"){
+                                            tag_code="tag_cute"
+                                        }else if(tag=="화려"){
+                                            tag_code="tag_brilliant"
+                                        }else if(tag=="우아"){
+                                            tag_code="tag_luxury"
+                                        }else if(tag=="심플"){
+                                            tag_code="tag_simple"
+                                        } %>
+                                <div class="projectItem_tagt <%= tag_code %>"><%= itemList.tag[j] %></div>
+                                <% } %>
+                            </div>
+                        </a>
+                    </div>
+                    <% } %>
+                </div>
+
+                <!-- <div class="design_title">
+                    <h2>도전! 펀딩</h2>
+                    <h8>다양한 디자인의 아이템!</h8>
+                </div>
+
+                <div class="projectItem_Container">
+
+                    <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href="#"><img
+                                class="projectItem_ProjectItemImage" src="./images/sample1.jpg" alt="My Image">
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t">나의 사과나무</h1>
+                                    <p class="projectItem_FundingTitle_w">thsdhrhd1214</p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo">
+                                    <span class="projectItem_FundingInfo_c">
+                                        <span><img src="./images/calendar.png" width="10" height="10">
+                                            &nbsp;15일 남음
+                                        </span>
+                                    </span>
+                                    <div class="projectItem_FundingInfo_m">
+                                        <span class="projectItem_FundingInfo_money">♥&nbsp;24
+                                        </span>
+                                        <span class="projectItem_FundingInfo_percent"></span></div>
+
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <div class="projectItem_tagt tag_winter">겨울</div>
+                                <div class="projectItem_tagt tag_luxury">우아</div>
+                                <div class="projectItem_tagt tag_simple">심플</div>
+                            </div>
+                        </a></div>
+                    <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href="#"><img
+                                class="projectItem_ProjectItemImage" src="./images/sample2.jpg" alt="My Image">
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t">스누피에게 사랑을</h1>
+                                    <p class="projectItem_FundingTitle_w">thsdhrhd1214</p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo">
+                                    <span class="projectItem_FundingInfo_c"><span>
+                                            <img src="./images/calendar.png" width="10" height="10">
+                                            &nbsp;15일 남음
+                                        </span>
+                                    </span>
+                                    <div class="projectItem_FundingInfo_m">
+                                        <span class="projectItem_FundingInfo_money">
+                                            ♥ &nbsp;68
+                                        </span>
+                                        <span class="projectItem_FundingInfo_percent"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <div class="projectItem_tagt tag_winter">겨울</div>
+                                <div class="projectItem_tagt tag_luxury">우아</div>
+                                <div class="projectItem_tagt tag_simple">심플</div>
+                            </div>
+                        </a></div>
+                    <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href="#"><img
+                                class="projectItem_ProjectItemImage" src="./images/sample3.jpg" alt="My Image">
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t">앵두는 귀여워!</h1>
+                                    <p class="projectItem_FundingTitle_w">thsdhrhd1214</p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo">
+                                    <span class="projectItem_FundingInfo_c">
+                                        <span><img src="./images/calendar.png" width="10" height="10">
+                                            &nbsp;29일 남음
+                                        </span>
+                                    </span>
+                                    <div class="projectItem_FundingInfo_m">
+                                        <span class="projectItem_FundingInfo_money">
+                                            ♥ &nbsp;12
+                                        </span>
+                                        <span class="projectItem_FundingInfo_percent"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <div class="projectItem_tagt tag_winter">겨울</div>
+                                <div class="projectItem_tagt tag_luxury">우아</div>
+                                <div class="projectItem_tagt tag_simple">심플</div>
+                            </div>
+                        </a></div>
+
+                    <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href="#"><img
+                                class="projectItem_ProjectItemImage" src="./images/sample4.jpg" alt="My Image">
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t">하트 투머치</h1>
+                                    <p class="projectItem_FundingTitle_w">아이유최고다</p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo">
+                                    <span class="projectItem_FundingInfo_c">
+                                        <span><img src="./images/calendar.png" width="10" height="10">&nbsp;18일 남음
+                                        </span>
+                                    </span>
+                                    <div class="projectItem_FundingInfo_m">
+                                        <span class="projectItem_FundingInfo_money">
+                                            ♥ &nbsp;2
+                                        </span>
+                                        <span class="projectItem_FundingInfo_percent"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <div class="projectItem_tagt tag_winter">겨울</div>
+                                <div class="projectItem_tagt tag_luxury">우아</div>
+                                <div class="projectItem_tagt tag_simple">심플</div>
+                            </div>
+                        </a></div>
+                </div> -->
+
+                <!-- <div class="design_title">
+                    <h2>진행중인 펀딩</h2>
+                    <h8>취향적인 아이템을 찾아봐!</h8>
+                </div>
+
+                <div class="projectItem_Container">
+                    <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href="#"><img
+                                class="projectItem_ProjectItemImage" src="./images/sample17.jpg" alt="My Image">
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t">홀리데이 러브 반지</h1>
+                                    <p class="projectItem_FundingTitle_w">지렁이냠냠</p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo">
+                                    <span class="projectItem_FundingInfo_c">
+                                        <span><img src="./images/calendar.png" width="10"
+                                                height="10">>&nbsp;29일남음</span></span>
+                                    <div class="projectItem_FundingInfo_m"><span class="projectItem_FundingInfo_money">
+                                            후원자 &nbsp;25
+                                        </span><span class="projectItem_FundingInfo_percent"></span>
+                                    </div>
+                                    <div>
+                                        가격 : &nbsp; 13,500원
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <div class="projectItem_tagt tag_winter">겨울</div>
+                                <div class="projectItem_tagt tag_luxury">우아</div>
+                                <div class="projectItem_tagt tag_simple">심플</div>
+                            </div>
+                        </a></div>
+                    <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href="#"><img
+                                class="projectItem_ProjectItemImage" src="./images/sample18.jpg" alt="My Image">
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t">나비왈츠</h1>
+                                    <p class="projectItem_FundingTitle_w">soowon888</p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo">
+                                    <span class="projectItem_FundingInfo_c">
+                                        <span><img src="./images/calendar.png" width="10" height="10"> &nbsp; 14일 남음
+                                        </span>
+                                    </span>
+                                    <div class="projectItem_FundingInfo_m">
+                                        <span class="projectItem_FundingInfo_money">
+                                            후원자 &nbsp; 12
+                                        </span>
+                                        <span class="projectItem_FundingInfo_percent"></span>
+                                    </div>
+                                    <div>
+                                        가격 : &nbsp; 11,300원
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <div class="projectItem_tagt tag_winter">겨울</div>
+                                <div class="projectItem_tagt tag_luxury">우아</div>
+                                <div class="projectItem_tagt tag_simple">심플</div>
+                            </div>
+                        </a></div>
+                    <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href="#">
+                            <img class="projectItem_ProjectItemImage" src="./images/sample19.jpg" alt="My Image">
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t">레일라 귀걸이</h1>
+                                    <p class="projectItem_FundingTitle_w">gwgw</p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo">
+                                    <span class="projectItem_FundingInfo_c"><span><img src="./images/calendar.png"
+                                                width="10" height="10">
+                                            &nbsp; 29일 남음
+                                        </span>
+                                    </span>
+                                    <div class="projectItem_FundingInfo_m">
+                                        <span class="projectItem_FundingInfo_money">
+                                            후원자 &nbsp; 1
+                                        </span><span class="projectItem_FundingInfo_percent"></span>
+                                    </div>
+                                    <div>
+                                        가격 : &nbsp;15,500원
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <div class="projectItem_tagt tag_winter">겨울</div>
+                                <div class="projectItem_tagt tag_luxury">우아</div>
+                                <div class="projectItem_tagt tag_simple">심플</div>
+                            </div>
+                        </a></div>
+
+                    <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href="#">
+                            <img class="projectItem_ProjectItemImage" src="./images/sample16.jpg" alt="My Image">
+                            <div class="projectItem_ProjectItemTextWrapper">
+                                <div class="projectItem_FundingTitle">
+                                    <h1 class="projectItem_FundingTitle_t">해변가의 추억</h1>
+                                    <p class="projectItem_FundingTitle_w">흰둥이81</p>
+                                </div>
+                                <hr class="projectItem_Line">
+                                <div class="projectItem_FundingInfo">
+                                    <span class="projectItem_FundingInfo_c">
+                                        <span><img src="./images/calendar.png" width="10" height="10">
+                                            &nbsp;
+                                            2일 남음
+                                        </span></span>
+                                    <div class="projectItem_FundingInfo_m">
+                                        <span class="projectItem_FundingInfo_money">
+                                            후원자 &nbsp;8
+                                        </span><span class="projectItem_FundingInfo_percent"></span>
+                                    </div>
+                                    <div>예상가 : &nbsp; 10,200원 </div>
+                                </div>
+                            </div>
+                            <div class="projectItem_tag">
+                                <div class="projectItem_tagt tag_winter">겨울</div>
+                                <div class="projectItem_tagt tag_luxury">우아</div>
+                                <div class="projectItem_tagt tag_simple">심플</div>
+                            </div>
+                        </a></div>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        $('.bxslider').bxSlider({
+            auto: true,
+            autoHover: true
+        });
+    });
+</script>

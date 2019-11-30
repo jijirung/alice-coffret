@@ -1,0 +1,12 @@
+/* footer.ejs */
+footer{
+    margin: 0 auto;
+    padding:20px;
+    margin-top: 50px;
+    text-align: center;
+    background-color:#f1a5ac;
+    color: #5D5D5D;
+    height: auto;
+    width:90%;
+    
+  }

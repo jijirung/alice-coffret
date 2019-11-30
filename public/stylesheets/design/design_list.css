@@ -1,0 +1,393 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Sunflower', sans-serif;
+    
+}
+
+
+.projectItem_Container:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.write_button{
+    width: 200px;
+    background: #000000;
+    color: #EAEAEA;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    padding:10px 15px 10px 15px; 
+}
+
+.writeBox{   
+    height: 50px;
+    margin: 0 auto;
+    float: right;
+    clear: both;
+    padding-right: 150px;
+}
+
+.myButton {
+    float: right;
+    background-color: #ffffff;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+    color: #000000;
+    font-family: Verdana;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 17px;
+    text-decoration: none;
+    text-shadow: 0px 0px 50px #283966;
+    border: 0.5px solid rgb(48, 48, 48);
+}
+
+.myButton:hover {
+   background-color:#cecece;
+}
+.myButton:active {
+   position:relative;
+   top:1px;
+}
+
+.designbtn {
+  padding: 80px 0px 0px 0px;
+  width: 90%;
+  height: 70px;
+  margin: auto;
+}
+
+.tag_box{
+    margin-top: 5%;
+    display: block;
+}
+.searchInput {
+    width: 300px;
+    height: 25px;
+    border: 0.5px solid rgb(48, 48, 48);
+    padding-left: 50px;
+    margin-right: 50px;
+}
+.serch{
+  width: 90%;
+  height: 100px;
+  margin: auto;
+}
+
+.check {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+  .projectItem_Container {
+      width: 90%;
+      height: 560px;
+      margin: 40px auto;
+      text-align: center;
+  }
+  .projectItem_Column {
+      width: 24%;
+      /* height: 45%; */
+      float: left;
+      padding: 0.5px 0.5px 15px 0.5px;
+      margin: 5px;
+      border: 0.6px solid rgb(214, 214, 214);
+      border-radius: 5px;
+  }
+  .projectItem_ProjectItemImage {
+      width: 100%;
+      height: 40%;
+  }
+  .projectItem_tag{
+      margin:15px;
+  }
+
+.projectItem_ProjectItemCard, .projectItem_ProjectItemCard:visited,
+.projectItem_ProjectItemCard:link{
+  color:#000000 ;
+  text-decoration: none;
+
+}
+.projectItem_ProjectItemCard:hover, .projectItem_ProjectItemCard:focus{
+  color:#6a3cff ;
+  font-weight:bold;    
+  text-decoration: none;
+
+}
+
+
+.projectItem_FundingTitle_t {
+  font-size: 10pt;
+  font-weight: 800;
+  margin: 5px 0 5px 0;
+
+}
+
+.projectItem_FundingTitle_w {
+  font-size: 8pt;
+  margin: 0 auto;
+
+}
+
+.projectItem_FundingInfo {
+  font-weight: 400;
+  font-size: 6pt;
+  padding: 8px;
+  margin:10px
+}
+
+.projectItem_Line {
+  width: 95%;
+}
+
+.projectItem_day {
+  font-weight: 800;
+}
+
+.projectItem_calendar {
+  width: 8px;
+}
+
+.projectItem_FundingInfo_c {
+  float: left;
+}
+
+.projectItem_FundingInfo_m {
+  float: right;
+}
+
+.projectItem_FundingInfo_money {
+  font-weight: 800;
+}
+.projectItem_tag{
+  width: 200px;
+  margin: 0 auto;
+  font-size: 8pt;
+
+}
+.projectItem_tagt{
+  float: left;
+  text-align: center;
+}
+
+
+.menuLink:link {
+  color: #ffffff;
+}
+
+.menuLink:visited {
+  color: #ffffff;
+}
+
+
+.tag_spring{
+  padding:0px 10px;
+  margin: 5px;
+  background: #BCE55C;
+  color: white;
+}
+.tag_summer{
+  padding:0px 10px;
+  margin: 5px;
+  background:#4374D9;
+  color: white;
+}
+.tag_fall{
+  padding:0px 10px;
+  margin: 5px;
+  background:#F15F5F;
+  color: white;
+}
+.tag_winter{
+  padding:0px 10px;
+  margin: 5px;
+  background:#6799FF;
+  color: white;
+}
+.tag_cute{
+  padding:0px 10px;
+  margin: 5px;
+  background: #FFE400;
+  color: white;
+}
+.tag_brilliant{
+  padding:0px 10px;
+  margin: 5px;
+  background: #FFB2D9;
+  color: white;
+}
+.tag_luxury{
+  padding:0px 10px;
+  margin: 5px;
+  background: #FF00DD;
+  color: white;
+}
+.tag_simple{
+  padding:0px 10px;
+  margin: 5px;
+  background: #AAD7A5;
+  color: white;
+}
+.design_title{
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+
+}
+.design_title>h2{
+
+  color:#6a3cff;
+}
+hr {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  border: 0;
+  border-top: 1px solid rgb(128, 128, 128);
+}
+
+.title{
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+.title h2{
+  color: #6a3cff;
+}
+.projectItem_ProjectItemImage {
+  width: 100%;
+  height: 400px;
+}
+.roww {
+  height: 47px;
+}
+
+.roww:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.roww > div {
+  float: left;
+  height: 100%;
+}
+
+.rowt > span {
+  vertical-align: middle;
+  display: table-cell;
+  padding-left: 15px;
+}
+
+.rowt {
+  display: table;
+  width: 18%;
+  background: #fafafa;
+  border-top: 0.5px solid #333333;
+  border-right: 0.5px solid #dfdfdf;
+}
+
+.serch > div:nth-child(2) .rowt {
+  border-top: 0.5px solid #dfdfdf;
+  border-bottom: 0.5px solid #333333;
+}
+
+.roww > div:nth-child(2) {
+  display: table;
+  width: 80%;
+  border-top: 0.5px solid #333333;
+}
+
+.roww > div:nth-child(2) > span {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 15px;
+}
+
+.roww > div:nth-child(2) > span > input[type='text'] {
+  margin: 0;
+}
+
+.serch .roww:nth-child(2) > div:nth-child(2) {
+  border-top: 0.5px solid #dfdfdf;
+  border-bottom: 0.5px solid #333333;
+}
+
+.roww > div:nth-child(2) > span > input[type='checkbox'] {
+  margin: 0 10px
+}
+
+.design_list_container {
+  overflow: auto;
+}
+@media (max-width: 2000px){
+  .design_list_container {
+    overflow: auto;
+  }
+  .projectItem_Container {
+      width: 90%;
+      height: 560px;
+      margin: 40px auto;
+      text-align: center;
+  }
+  .projectItem_Column {
+      width: 24%;  
+      float: left;
+      padding: 0.5px 0.5px 15px 0.5px;
+      margin: 5px;
+      border: 0.6px solid rgb(214, 214, 214);
+      border-radius: 5px;
+  } 
+  .projectItem_tag{
+      margin:15px;
+  }
+
+}
+@media (max-width: 1400px){
+  .projectItem_Container {
+    width: 90%;
+    height: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .projectItem_Column {
+      width:31.5%;
+      /* height: 45%; */
+      float: left;
+      padding: 0.5px 0.5px 15px 0.5px;
+      margin: 5px;
+      border: 0.6px solid rgb(214, 214, 214);
+      border-radius: 5px;
+  }
+  .projectItem_tag{
+        margin:15px;
+  }
+
+}
+@media (max-width:800px){
+  .projectItem_Container {
+    width: 90%;
+    height: 830px;
+    margin: 40px auto;
+    text-align: center;
+  }
+  .projectItem_Column {
+      width: 47.5%;
+      /* height: 45%; */
+      float: left;
+      padding: 0.5px 0.5px 15px 0.5px;
+      margin: 5px;
+      border: 0.6px solid rgb(214, 214, 214);
+      border-radius: 5px;
+  }
+    .projectItem_tag{
+        margin:15px;
+    }
+}
+
+
+

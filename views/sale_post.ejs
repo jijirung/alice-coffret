@@ -1,0 +1,121 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Alice_Coffret-sale_post</title>
+
+    <style>
+        .price input[type="number"]::-webkit-outer-spin-button,
+        .price input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="../public/css/indexstyle.css">
+    <script>
+        function count_ck(obj) {
+            var chkbox = document.getElementsByName("tag[]");
+            var chkCnt = 0;
+            for (var i = 0; i < chkbox.length; i++) {
+                if (chkbox[i].checked) {
+                    chkCnt++;
+                }
+            }
+            if (chkCnt > 3) {
+                alert("태그는 3개까지만!");
+                obj.checked = false;
+                return false;
+            }
+        }
+    </script>
+	<link href="/public/css/style.css" rel="stylesheet" >
+
+</head>
+
+<body>
+    <div class="header">
+        <% include ./header.ejs %>
+    </div>
+
+    <div class="content" >
+        <img class="imgForm" src="../public/images/form_top.png" />
+        <div class="post_title">
+            <h2>판매글 작성</h2>
+            <h5 style="font-weight: normal;">-자신만의 특별한 소개문구 작성!-</h5>
+        </div>
+        <div class="post_form">
+            <form action="/product/sale_post" enctype="multipart/form-data" method="post">
+                <div class="post_box">
+                    <div class="category_select">
+                        <label class="sale_label">카테고리</label><br />
+                        <select name="accessory_category">
+                            <option value="Earring" selected>귀걸이</option>
+                            <option value="Piercing">피어싱</option>
+                            <option value="Ring">반지</option>
+                            <option value="Wristband">팔찌</option>
+                            <option value="Necklace">목걸이</option>
+                            <option value="Choker">초커</option>
+                            <option value="Clock">시계</option>
+                            <option value="Brooch ">브로치</option>
+                            <option value="Hairclip">머리핀</option>
+                        </select>
+                    </div>
+                    <div class="product_name_box">
+                        <label class="sale_label">악세서리명</label><br />
+                        <input class="sale_post_title" name="product_name" placeholder="자신만의 특별한 악세서리 이름을 입력해주세요" />
+                    </div>
+                    <div class="price">
+                        <label class="sale_label">가격</label><br />
+                        <input type="number" placeholder="가격" name="price" />
+                    </div>
+                    <div class="quantity">
+                        <label class="sale_label">판매수량</label><br />
+                        <select name="product_quantity">
+                            <% for(var i=1;i<= 100;i++){ %>
+                            <option value=<%= i %>><%= i %> </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div>
+                        <label>태그</label><br />
+                        <label class="tag_spring">봄</label><input type="checkbox" name="tag[]" value="봄"
+                            onClick="count_ck(this);">
+                        <label class="tag_summer">여름</label><input type="checkbox" name="tag[]" value="여름"
+                            onClick="count_ck(this);">
+                        <label class="tag_fall">가을</label><input type="checkbox" name="tag[]" value="가을"
+                            onClick="count_ck(this);">
+                        <label class="tag_winter">겨울</label><input type="checkbox" name="tag[]" value="겨울"
+                            onClick="count_ck(this);">
+                        <label class="tag_cute">큐트</label><input type="checkbox" name="tag[]" value="큐트"
+                            onClick="count_ck(this);"><br />
+                        <label class="tag_brilliant">화려</label><input type="checkbox" name="tag[]" value="화려"
+                            onClick="count_ck(this);">
+                        <label class="tag_luxury">우아</label><input type="checkbox" name="tag[]" value="우아"
+                            onClick="count_ck(this);">
+                        <label class="tag_simple">심플</label><input type="checkbox" name="tag[]" value="심플"
+                            onClick="count_ck(this);">
+                    </div>
+                    <div class="thumnail_img">
+                        <!-- multiple속성 추가하면 여러개 -->
+                        <label>썸네일 이미지</label><br />
+                        <input type="file" name="imgfile" />
+                    </div>
+                    <div class="post_content">
+                        <label>내용</label><br />
+                        <textarea class="form-control" name="post_content" rows="30" required
+                            style="resize: none;width: 100%;"></textarea>
+                    </div>
+                    <div class="btnsubmitbox">
+                        <input class="btn1" type="submit" value="작성" style="float: right;" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <img class="imgForm" src="../public/images/form_bottom.png" />
+    </div>
+    <div class="footer">
+            <% include ./footer.ejs %>
+        </div>
+
+</body>
+
+</html>

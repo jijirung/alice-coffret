@@ -1,0 +1,332 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Alice_Coffret-sale_detail</title>
+    
+    <style>
+        .content {
+            width: 80%;
+            position: relative;
+            margin: 0% auto;
+        }
+
+        .content .category {
+            text-align: center;
+        }
+
+        .content form {
+            margin-left: 10%;
+        }
+
+        .product_price input[type="number"]::-webkit-outer-spin-button,
+        .product_price input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .btnbox {
+            padding: 3px 20px;
+            margin: 2%;
+            border: none;
+            background: #000000;
+            color: white;
+
+        }
+
+        .image_info {
+            margin-top: 11%;
+            margin-left: 5%;
+            margin-bottom: 5%;
+            width: 30%;
+            display: block;
+            float: left;
+
+        }
+
+        .pro_img img {
+            width: 100%;
+            height: 400px;
+        }
+
+        .product_info {
+            margin-left: 5%;
+            width: 40%;
+            height: 400px;
+            float: left;
+            display: block;
+
+        }
+
+        .product_info h3 {
+            text-align: center;
+            padding: 22px 5px 20px 9px;
+            border-bottom: 2px solid black;
+        }
+
+        .product_price span {
+            font-size: 20px;
+            color: #00008d;
+            font-weight: bold;
+        }
+
+        .product_quantity {
+            display: block;
+            margin-top: 5%;
+        }
+
+        .product_quantity span {
+            font-size: 15px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .saler {
+            margin-top: 5%;
+        }
+
+        .tag_box {
+            margin-top: 5%;
+        }
+
+        .tag_box span {
+            padding: 0px 5px;
+        }
+
+        .tag_spring {
+            padding: 0px 10px;
+            margin: 5px;
+            background: #BCE55C;
+            color: white;
+        }
+
+        .tag_summer {
+            padding: 0px 10px;
+            margin: 5px;
+            background: #4374D9;
+            color: white;
+        }
+
+        .tag_fall {
+            padding: 0px 10px;
+            margin: 5px;
+            background: #F15F5F;
+            color: white;
+        }
+
+        .tag_winter {
+            padding: 0px 10px;
+            margin: 5px;
+            background: #6799FF;
+            color: white;
+        }
+
+        .tag_cute {
+            padding: 0px 10px;
+            margin: 5px;
+            background: #FFE400;
+            color: white;
+        }
+
+        .tag_brilliant {
+            padding: 0px 10px;
+            margin: 5px;
+            background: #FFB2D9;
+            color: white;
+        }
+
+        .tag_luxury {
+            padding: 0px 10px;
+            margin: 5px;
+            background: #FF00DD;
+            color: white;
+        }
+
+        .tag_simple {
+            padding: 0px 10px;
+            margin: 5px;
+            background: #AAD7A5;
+            color: white;
+        }
+
+        .product_content_info {
+            clear: both;
+            width: 75%;
+            margin-left: 5%;
+            text-align: center;
+        }
+
+        .product_content {
+            clear: both;
+            width: 75%;
+            margin-left: 5%;
+            text-align: center;
+        }
+
+        .form-button-box {
+            clear: both;
+            width: 70%;
+            margin-left: 10%;
+            text-align: right;
+        }
+
+        .form-button-box input {
+            width: 10%;
+            background: #000000;
+            color: white;
+            padding: 2px;
+            border: none;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <% include ./header.ejs %>
+    </div>
+
+    <div class="content">
+
+        <% if(session.productDetail.data.userid==session.productDetail.data.loginid){ %>
+        <form action="/product/update" method="post">
+            <div class="image_info">
+                <div class="pro_img">
+                    <img name="thumbnail" src=<%=session.productDetail.data.thumbnail %> />
+                </div>
+            </div>
+            <div class="product_info">
+                <h3><%= session.productDetail.data.product_name %></h3>
+                <div class="product_price">
+                    <span>판매가</span>
+                    <input type="number" name="price" value=<%= session.productDetail.data.price %> placeholder=<%= session.productDetail.data.price %> />
+
+                </div>
+                <div class="product_quantity">
+                    <span>상품 개수</span>
+                    <select name="product_quantity">
+                        <% for(var i=1;i<= 100;i++){ %>
+                        <option value=<%= i %>><%= i %> </option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="saler">
+                    <span>작성자</span>
+                    <span>
+                        <%= session.productDetail.data.name %>
+                    </span>
+                </div>
+                <div class="tag_box">
+                    <% for(var j=0; j< session.productDetail.data.tag.length; j++){
+                            var tag=session.productDetail.data.tag[j]
+                            var tag_code
+                            if(tag=="봄"){
+                                tag_code="tag_spring"
+                            }else if(tag=="여름"){
+                                tag_code="tag_summer"
+                            }else if(tag=="가을"){
+                                tag_code="tag_fall"
+                            }else if(tag=="겨울"){
+                                tag_code="tag_winter"
+                            }else if(tag=="큐트"){
+                                tag_code="tag_cute"
+                            }else if(tag=="화려"){
+                                tag_code="tag_brilliant"
+                            }else if(tag=="우아"){
+                                tag_code="tag_luxury"
+                            }else if(tag=="심플"){
+                                tag_code="tag_simple"
+                            } %>
+                    <span class=<%= tag_code %>><%= session.productDetail.data.tag[j] %></span>
+                    <% } %>
+                </div>
+
+            </div><br />
+            <div class="product_content_info">
+                <h3>상품 정보</h3>
+            </div>
+            <div class="product_content">
+                <div>
+                    <%- session.productDetail.data.content %>
+                </div>
+            </div>
+            <div style="float: right; margin-bottom: 20px;">
+                <input class="btn1" type="submit" value="수정">
+                <input class="btn1" type="button"
+                    onclick="javascript:window.location='/product/delete?productId=<%=session.productDetail.data._id %>'"
+                    value="삭제">
+            </div>
+        </form>
+        <% }else{ %>
+        <form action="/transaction/purchase" method="POST">
+            <div>
+                <div class="image_info">
+                    <div class="pro_img">
+                        <img name="thumbnail" src="<%=session.productDetail.data.thumbnail %> "/>
+                    </div>
+                </div>
+                <div class="product_info">
+                    <h3><%= session.productDetail.data.product_name %></h3>
+                    <div class="product_price">
+                        <span>판매가</span>
+                        <span><%= session.productDetail.data.price %>원</span>
+                    </div>
+                    <div class="product_quantity">
+                        <span>상품 개수</span>
+                        <span>
+                            <input maxlength="5" name="sale_quantity" required type="number" min="1"
+                                max=<%= session.productDetail.data.product_quantity %>>
+                        </span><br />
+                        <span style="font-size: 8pt; color: grey;">남은 수량 :
+                            <%=session.productDetail.data.product_quantity %></span>
+                    </div>
+                    <div class="saler">
+                        <span>작성자</span>
+                        <span>
+                            <%= session.productDetail.data.name %>
+                        </span>
+                    </div>
+                    <div class="tag_box">
+                        <% for(var j=0; j< session.productDetail.data.tag.length; j++){
+                                            var tag=session.productDetail.data.tag[j]
+                                            var tag_code
+                                            if(tag=="봄"){
+                                                tag_code="tag_spring"
+                                            }else if(tag=="여름"){
+                                                tag_code="tag_summer"
+                                            }else if(tag=="가을"){
+                                                tag_code="tag_fall"
+                                            }else if(tag=="겨울"){
+                                                tag_code="tag_winter"
+                                            }else if(tag=="큐트"){
+                                                tag_code="tag_cute"
+                                            }else if(tag=="화려"){
+                                                tag_code="tag_brilliant"
+                                            }else if(tag=="우아"){
+                                                tag_code="tag_luxury"
+                                            }else if(tag=="심플"){
+                                                tag_code="tag_simple"
+                                            } %>
+                        <span class=<%= tag_code %>><%= session.productDetail.data.tag[j] %></span>
+                        <% } %>
+                    </div>
+                </div><br />
+                <div class="product_content_info" "><h3>상품 정보</h3></div>
+                                <div class=" product_content" style="border: solid 1px #BEC8F8; ">
+                    <div>
+                        <%- session.productDetail.data.content %>
+                    </div>
+                </div>
+                <div style="float: right; margin-bottom: 20px;">
+                    <input class="btn1" type="submit" value="거래">
+                </div>
+            </div>
+        </form>
+        <% } %>
+    </div>
+    <div class="footer">
+        <% include ./footer.ejs %>
+    </div>
+</body>
+
+</html>

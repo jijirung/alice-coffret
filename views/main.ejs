@@ -1,0 +1,263 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Alice_Coffret</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link href="/public/css/style.css" rel="stylesheet" >
+</head>
+
+<body>
+    <div class="header">
+        <% include ./header.ejs %>
+    </div>
+    <!-- 이달의 상품 -->
+    <div class="content">
+        <div class="title">
+            <h2>#이달의 ITEM</h2>
+            <h8>이 번달 판매 순위 1~5등!</h8>
+        </div>
+
+        <section style="margin-bottom:20px ;">
+            <div class="wrapper">
+                <div class="bxslider">
+                    <% for(var i=0; i< session.bannerImg.list.length; i++){ 
+                        imgList=session.bannerImg.list[i]
+                    %>
+                    <div >
+                        <h3 class="title2"><%= imgList.product_name %></h3>
+                        <div class="tag_box">
+                            <% for(var j=0; j< imgList.tag.length; j++){
+                                var tag=imgList.tag[j]
+                                var tag_code
+                                if(tag=="봄"){
+                                    tag_code="tag_spring"
+                                }else if(tag=="여름"){
+                                    tag_code="tag_summer"
+                                }else if(tag=="가을"){
+                                    tag_code="tag_fall"
+                                }else if(tag=="겨울"){
+                                    tag_code="tag_winter"
+                                }else if(tag=="큐트"){
+                                    tag_code="tag_cute"
+                                }else if(tag=="화려"){
+                                    tag_code="tag_brilliant"
+                                }else if(tag=="우아"){
+                                    tag_code="tag_luxury"
+                                }else if(tag=="심플"){
+                                    tag_code="tag_simple"
+                                } %>
+                            <div class="projectItem_tagt <%= tag_code %>"><%= imgList.tag[j] %></div>
+                            <% } %>
+                        </div>
+                        <img alt="" style="width: 70%;" src=<%=imgList.thumbnail %> />
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+
+        </section>
+        <div id="design_list_container">
+            <div data-reactroot="" class="App">
+                <div>
+                    <div class="design_title">
+                        <h2>새로운 ITEM</h2>
+                        <h8>따끈 따끈 신상 아이템!</h8>
+                    </div>
+                    <div class="projectItem_Container">
+                        <% for(var i=0; i< session.newItem.list.length; i++){ 
+                            itemList=session.newItem.list[i]
+                        %>
+                        <div class="projectItem_Column">
+                            <a class="projectItem_ProjectItemCard"
+                                onclick="javascript:window.location='/product/detail?productId=<%=itemList._id %>'">
+                                <img class="projectItem_ProjectItemImage" alt="My Image" src=<%=itemList.thumbnail %> />
+                                <div class="projectItem_ProjectItemTextWrapper">
+                                    <div class="projectItem_FundingTitle">
+                                        <h2 class="projectItem_FundingTitle_t"><%=itemList.product_name %></h2>
+                                        <p class="projectItem_FundingTitle_w"><%=itemList.userid %></p>
+                                    </div>
+                                    <hr class="projectItem_Line">
+                                    <div class="projectItem_FundingInfo"><span class="projectItem_FundingInfo_c"></span>
+                                        <div class="projectItem_FundingInfo_m">
+                                            <span class="projectItem_FundingInfo_money">
+                                                가격 : &nbsp;<%=itemList.price %>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="projectItem_tag">
+                                <% for(var j=0; j< itemList.tag.length; j++){
+                                        var tag=itemList.tag[j]
+                                        var tag_code
+                                        if(tag=="봄"){
+                                            tag_code="tag_spring"
+                                        }else if(tag=="여름"){
+                                            tag_code="tag_summer"
+                                        }else if(tag=="가을"){
+                                            tag_code="tag_fall"
+                                        }else if(tag=="겨울"){
+                                            tag_code="tag_winter"
+                                        }else if(tag=="큐트"){
+                                            tag_code="tag_cute"
+                                        }else if(tag=="화려"){
+                                            tag_code="tag_brilliant"
+                                        }else if(tag=="우아"){
+                                            tag_code="tag_luxury"
+                                        }else if(tag=="심플"){
+                                            tag_code="tag_simple"
+                                        } %>
+                                <div class="projectItem_tagt <%= tag_code %>"><%= itemList.tag[j] %></div>
+                                <% } %>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    <div class="design_title">
+                        <h2>도전! 펀딩</h2>
+                        <h8>다양한 디자인의 아이템!</h8>
+                    </div>
+                    <div class="projectItem_Container">
+                        <% for(var i=0; i< designList.length; i++){
+                            var endDate = Date.parse(designList[i].endDate);
+                            var nowDate = new Date();
+
+                            var btMs = endDate - nowDate.getTime();
+                            var btDay = parseInt(btMs / (1000*60*60*24)) + 1;
+
+                            %>
+
+                        <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href=<%='/design/detail/' + designList[i]._id %>>
+                            <img class="projectItem_ProjectItemImage" src=<%=designList[i].image%> alt="My Image">
+                                <div class="projectItem_ProjectItemTextWrapper">
+                                    <div class="projectItem_FundingTitle">
+                                        <h1 class="projectItem_FundingTitle_t"><%=designList[i].title%></h1>
+                                        <p class="projectItem_FundingTitle_w"><%=designList[i].writer.userid%></p>
+                                    </div>
+                                    <hr class="projectItem_Line">
+                                    <div class="projectItem_FundingInfo">
+                                        <span class="projectItem_FundingInfo_c">
+                                            <span><img src="/public/src/calendar.png" width="10" height="10">
+                                                &nbsp;<%=btDay%>일 남음
+                                            </span>
+                                        </span>
+                                        <div class="projectItem_FundingInfo_m">
+                                            <span class="projectItem_FundingInfo_money">♥&nbsp;<%=designList[i].like.length%>
+                                            </span>
+                                            <span class="projectItem_FundingInfo_percent"></span></div>
+
+                                    </div>
+                                </div>
+                                <div class="projectItem_tag">
+                                    <% for(var j=0; j< designList[i].tag.length; j++){
+                                        var tag=designList[i].tag[j]
+                                        var tag_code
+                                        if(tag=="봄"){
+                                            tag_code="tag_spring"
+                                        }else if(tag=="여름"){
+                                            tag_code="tag_summer"
+                                        }else if(tag=="가을"){
+                                            tag_code="tag_fall"
+                                        }else if(tag=="겨울"){
+                                            tag_code="tag_winter"
+                                        }else if(tag=="큐트"){
+                                            tag_code="tag_cute"
+                                        }else if(tag=="화려"){
+                                            tag_code="tag_brilliant"
+                                        }else if(tag=="우아"){
+                                            tag_code="tag_luxury"
+                                        }else if(tag=="심플"){
+                                            tag_code="tag_simple"
+                                        } %>
+                                    <div class="projectItem_tagt <%= tag_code %>"><%= designList[i].tag[j] %></div>
+                                    <% } %>
+                                </div>
+                            </a>
+                        </div>
+                        <%}%>
+                    </div>
+                    <div class="design_title">
+                        <h2>진행중인 펀딩</h2>
+                        <h8>취향적인 아이템을 찾아봐!</h8>
+                    </div>
+    
+                    <div class="projectItem_Container">
+                        <% for(var i=0; i< purchaseList.length; i++){
+                            var endDate = Date.parse(purchaseList[i].endDate);
+                            var nowDate = new Date();
+
+                            var btMs = endDate - nowDate.getTime();
+                            var btDay = parseInt(btMs / (1000*60*60*24)) + 1;
+                        %>
+
+                        <div class="projectItem_Column"><a class="projectItem_ProjectItemCard" href=<%='/purchase/detail/' + purchaseList[i]._id %>>
+                            <img class="projectItem_ProjectItemImage" src=<%=purchaseList[i].image%> alt="My Image">
+                                <div class="projectItem_ProjectItemTextWrapper">
+                                    <div class="projectItem_FundingTitle">
+                                        <h1 class="projectItem_FundingTitle_t"><%=purchaseList[i].title%></h1>
+                                        <p class="projectItem_FundingTitle_w"><%=purchaseList[i].writer.userid%></p>
+                                    </div>
+                                    <hr class="projectItem_Line">
+                                    <div class="projectItem_FundingInfo">
+                                            <span class="projectItem_FundingInfo_c">
+                                                <span><img src="/public/src/calendar.png" width="10" height="10">
+                                                    &nbsp;<%=btDay%>일 남음
+                                                </span>
+                                            </span>
+                                            <div class="projectItem_FundingInfo_m">
+                                                <span class="projectItem_FundingInfo_money">후원자:<%=purchaseList[i].sponsor.length%>
+                                                </span>
+                                                <span class="projectItem_FundingInfo_percent"></span></div>
+    
+                                        </div>
+                                </div>
+                                <div class="projectItem_tag">
+                                    <% for(var j=0; j< purchaseList[i].tag.length; j++){
+                                        var tag=purchaseList[i].tag[j]
+                                        var tag_code
+                                        if(tag=="봄"){
+                                            tag_code="tag_spring"
+                                        }else if(tag=="여름"){
+                                            tag_code="tag_summer"
+                                        }else if(tag=="가을"){
+                                            tag_code="tag_fall"
+                                        }else if(tag=="겨울"){
+                                            tag_code="tag_winter"
+                                        }else if(tag=="큐트"){
+                                            tag_code="tag_cute"
+                                        }else if(tag=="화려"){
+                                            tag_code="tag_brilliant"
+                                        }else if(tag=="우아"){
+                                            tag_code="tag_luxury"
+                                        }else if(tag=="심플"){
+                                            tag_code="tag_simple"
+                                        } %>
+                                    <div class="projectItem_tagt <%= tag_code %>"><%= purchaseList[i].tag[j] %></div>
+                                    <% } %>
+                                </div>
+                            </a>
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <% include ./footer.ejs %>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        $('.bxslider').bxSlider({
+            auto: true,
+            autoHover: true
+        });
+    });
+</script>

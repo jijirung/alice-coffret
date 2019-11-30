@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link href="/public/stylesheets/design/design_detail.css" rel="stylesheet" >
+        <link href="https://fonts.googleapis.com/css?family=Sunflower:300,500,700&display=swap&subset=korean" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap" rel="stylesheet">
+        <link href="/public/css/style.css" rel="stylesheet" >         
+    </head>
+    <body>
+        
+        <div class="header">
+                    <% include ../header.ejs %>
+        </div>
+         <div id="design_list_container"></div>
+        <script type="text/javascript">
+            var posts =<%-JSON.stringify(posts)%>;
+            var session =<%-JSON.stringify(session)%>;
+               var like = <%-JSON.stringify(like)%>;
+        </script>
+        <script src="https://fb.me/react-15.1.0.js"></script>
+        <script src="https://fb.me/react-dom-15.1.0.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/babel" src="/public/javascript/components/design/design_detail.js"></script>
+        
+        <div class="footer">
+            <% include ../footer.ejs %>
+        </div>
+        
+    </body>
+</html>
