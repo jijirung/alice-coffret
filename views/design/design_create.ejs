@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+        <link href="https://fonts.googleapis.com/css?family=Sunflower:300,500,700&display=swap&subset=korean" rel="stylesheet">
+        <link href="/public/css/style.css" rel="stylesheet" >       
+    </head>
+    <body>
+                   
+        <div class="header">
+                <% include ../header.ejs %>
+        </div> 
+        <div id="design_create_container"></div>
+
+        <script src="https://fb.me/react-15.1.0.js"></script>
+        <script src="https://fb.me/react-dom-15.1.0.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel" src="/public/javascript/components/design/design_create.js"></script>
+
+        <div class="footer">
+                <% include ../footer.ejs %>
+        </div>
+    
+    </body>
+</html>

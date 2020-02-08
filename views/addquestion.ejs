@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+		
+		<title>문의글 쓰기</title>
+		
+		  <link href="/public/stylesheets/semantic.min.css" rel="stylesheet" >
+		  <link href="/public/css/header.css" rel="stylesheet" >
+		  <link href="/public/css/footer.css" rel="stylesheet" >
+		 
+		<style>
+			* {
+				padding:0;
+				margin:0;
+				box-sizing:border-box;
+			}
+			
+			html {
+				width:100%;
+				height:100%;
+			}
+			
+			body {
+				width:100%;
+				height:100%;
+				color: #000;
+				background-color: #fff;
+			}
+					
+			.container {
+				margin-right: auto;
+				margin-left: auto;
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+	
+			span {
+				color: #333;
+			}
+	  
+			#board_title {
+				font-size:1.2em;
+				font-weight:bold;
+				color:teal;
+			}
+	  
+		</style>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="/public/javascript/semantic.min.js"></script>
+		<script src="/public/ckeditor/ckeditor.js"></script>
+		
+		<script>
+			
+			$(document).ready(function() { 
+				CKEDITOR.config.extraPlugins = 'colorbutton';
+				CKEDITOR.env.isCompatible = true;
+				CKEDITOR.replace('contents');
+			});
+			
+		</script>
+	</head>
+<body>
+	<div class="header">
+		<% include ./header.ejs %>
+	</div>
+	
+    <div class="container">
+	    <br>
+     
+		<div class="ui raised segment">
+			<a class="ui blue ribbon label">QnA</a>
+     			<span id="board_title">문의글</span>
+		
+			
+			<div class="ui blue fluid card">
+				 <div class="content">
+
+					 <%if(question){%>
+					 	<form class="content ui form" method="post" action="/question/update">
+							<input type="hidden" value="<%=question._id%>" name="questionId">
+					 <%}else{%>
+					 	<form class="content ui form" method="post" action="/question/addquestion">
+					 <%}%>
+						<h4 class="ui dividing header">문의글 입력 항목</h4>
+						
+						<div class="two fields">
+				    		<div class="field">
+				      			<label>제목</label>
+								<%if(question){%>
+									<input type="text" name="title" value="<%=question.title%>">
+								<%}else{%>
+									<input type="text" name="title" placeholder="제목 입력">
+								<%}%>
+							</div>
+							<div class="field"></div>
+						</div>
+
+						<div class="two fields">
+							<div class="field">
+								<label>문의유형</label>
+								<select name="type">
+									<%if (question){%>
+										<%if(question.type == "2"){%>
+											<option value="1">계정문의</option>
+											<option value="2" selected>결제/환불 문의</option>
+											<option value="3" >기타문의</option>
+										<%}else if(question.type == "3"){%>
+											<option value="1" >계정문의</option>
+											<option value="2">결제/환불 문의</option>
+											<option value="3" selected>기타문의</option>
+										<%}else{%>
+											<option value="1" selected>계정문의</option>
+											<option value="2">결제/환불 문의</option>
+											<option value="3" >기타문의</option>
+											<%}
+										
+									}else{%>
+										<option value="1" selected>계정문의</option>
+										<option value="2">결제/환불 문의</option>
+										<option value="3">기타문의</option>
+									<%}%>
+								</select>
+							</div>
+							<div class="field"></div>
+						</div>
+								
+						<div class="field">
+				    		<label>내용</label>
+							<%if(question){%>
+								<textarea id="contents" name="content" rows="10" cols="80"><%-question.content%></textarea>
+							<%}else{%>
+								<textarea id="contents" name="content" rows="10" cols="80"></textarea>
+							<%}%>
+				  		</div>
+								 
+						<input class="ui submit button" type="submit" value="추가" name="" />
+						<input class="ui button" type="button" value="취소" name="" onclick="javascript:history.back()" />
+					</form>
+					
+					<br><br>
+					
+				</div>
+			</div>
+		</div>
+ 
+	</div>
+	
+	<br><br>
+	<div class="footer">
+			<% include ./footer.ejs %>
+	</div>
+</body>
+</html>

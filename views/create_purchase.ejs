@@ -1,0 +1,297 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap" rel="stylesheet">
+    <link href="/public/css/style.css" rel="stylesheet" >
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+
+        .ProjectIntroduction_ProjectOutline {
+            width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .ProjectIntroduction__ProjectCategory {
+            color: #757575;
+            font-size: 10px;
+            background: #fafafa;
+            padding: 4px;
+            border: 1px solid #EAEAEA;
+            border-radius: 3px;
+        }
+
+        .ProjectIntroduction__ProjectTitle {
+            font-size: 28px;
+        }
+
+        .ProjectIntroduction__CreatorName {
+            color: black;
+            text-decoration: none;
+        }
+
+        .ProjectIntroduction__ProjectIntroductionMain {
+            width: 950px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .ProjectIntroduction__ProjectCover {
+            height: 400px;
+        }
+
+        .ProjectIntroduction__ProjectIntroductionMainColumn {
+            float: left;
+            position: relative;
+        }
+
+        .ProjectIntroduction__ProjectIntroductionMainColumn > button {
+            position: absolute;
+            top: 45%;
+            left: 25%;
+            background-color: transparent !important;
+            background-image: none !important;
+            border-color: transparent;
+            border: none;
+        }
+
+        .ProjectIntroduction__FundingStatuss {
+            float: right;
+        }
+
+        .ProjectIntroduction__StatusTitle {
+            margin-bottom: 5px;
+        }
+
+        .ProjectIntroduction__StatusTitle, .ProjectIntroduction__StatusTitle {
+            font-size: 13pt;
+            font-weight: 700;
+        }
+
+        .ProjectIntroduction__Metric {
+            margin-bottom: 20px;
+        }
+
+        .ProjectIntroduction__StatusValue {
+            font-size: 20pt;
+            font-weight: 800;
+        }
+
+        .ProjectIntroduction__Small {
+            font-size: 8pt;
+            font-weight: 400;
+        }
+
+        .ProjectIntroduction__FundingRate {
+            font-size: 10pt;
+            font-weight: 800;
+        }
+
+        .FundingInformation__FundingInformationInner {
+            padding: 20px;
+            margin-top: 10px;
+            background: #fafafa;
+            border: 0.5px solid #EAEAEA;
+            border-radius: 5px;
+        }
+
+        .FundingInformation__FundingInformationInner > div {
+            font-weight: 800;
+        }
+
+        .ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21.lcgtza {
+            display: inline-block;
+            
+            margin-right: 5px;
+            /*float: left;*/
+        }
+
+        .FundingInformation {
+            margin-bottom: 20px;
+        }
+
+        .ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3.fFIyMZ {
+            margin-bottom: 40px;
+        }
+
+        .KCBYB {
+            width: 315px;
+            height: 55px;
+            cursor: pointer;
+            display: inline-block;
+            outline: none;
+            border: none;
+            vertical-align: baseline;
+            box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(0,0,0,0.1) inset;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-transition: opacity 0.1s ease,background-color 0.1s ease,color 0.1s ease,box-shadow 0.1s ease,background 0.1s ease;
+            transition: opacity 0.1s ease,background-color 0.1s ease,color 0.1s ease,box-shadow 0.1s ease,background 0.1s ease;
+            -webkit-tap-highlight-color: transparent;
+            border-radius: 0.28571429rem;
+            text-transform: none;
+            text-shadow: none;
+            font-weight: bold;
+            font-style: normal;
+            text-align: center;
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            color: rgba(0,0,0,.6);
+            background-color: #e7e7e7;
+            background-color: #fa6462;
+            color: #fff;
+            font-size: 1.1em;
+            opacity: 1;
+        }
+
+        .fVHsGg {
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            vertical-align: baseline;
+            box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(0,0,0,0.1) inset;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-transition: opacity 0.1s ease,background-color 0.1s ease,color 0.1s ease,box-shadow 0.1s ease,background 0.1s ease;
+            transition: opacity 0.1s ease,background-color 0.1s ease,color 0.1s ease,box-shadow 0.1s ease,background 0.1s ease;
+            -webkit-tap-highlight-color: transparent;
+            border-radius: 0.28571429rem;
+            text-transform: none;
+            text-shadow: none;
+            font-weight: bold;
+            font-style: normal;
+            text-align: center;
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            color: rgba(0,0,0,.6);
+            background-color: #e7e7e7;
+            font-size: 1.1em;
+            opacity: 1;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $('.ProjectIntroduction__ProjectIntroductionMainColumn>button').click(function(){
+                $('input:file').click();
+            });
+
+        });
+        $(function () {
+            $("input:file").change(function () {
+                $('.ProjectIntroduction__ProjectIntroductionMainColumn>button').html('사진을 변결하시려면 클릭하세요')
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = imageIsLoaded;
+                    reader.readAsDataURL(this.files[0]);
+                }}
+            );
+        });
+
+        function imageIsLoaded(e) {
+            $('.ProjectIntroduction__ProjectIntroductionMainColumn>img').attr('src', e.target.result);
+        }
+
+        function createProject() {
+            var createForm = document.createElement('form');
+            createForm.className = 'createForm';
+            createForm.setAttribute('method', 'post');
+            createForm.setAttribute('action', '/product/create_purchase');
+            createForm.setAttribute('enctype', 'multipart/form-data');
+            var nameInput = document.getElementById('projectName');
+            nameInput.setAttribute('name', 'name')
+            createForm.append(nameInput);
+            var imgInput = document.getElementById('image');
+            imgInput.setAttribute('name', 'image')
+            createForm.append(imgInput);
+            var goalInput = document.getElementById('goal');
+            goalInput.setAttribute('name', 'goal')
+            createForm.append(goalInput);
+            var endDateInput = document.getElementById('endDate');
+            endDateInput.setAttribute('name', 'endDate')
+            createForm.append(endDateInput);
+            var price = document.getElementById('price');
+            price.setAttribute('name', 'price')
+            createForm.append(price)
+            console.log(createForm);
+            $('body').append(createForm);
+            createForm.submit();
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <% include ./header.ejs %>
+</div>
+<div>
+    <div class="ProjectIntroduction_ProjectIntroductionBackground">
+        <div class="Container">
+            <div class="ProjectIntroduction_ProjectIntroductionWrapper">
+                <div class="ProjectIntroduction_ProjectOutline">
+                    <div class="ProjectIntroduction__ProjectOutlineInner-sc-1o2ojgb-3 fFIyMZ">
+                        <h1 class="ProjectIntroduction__ProjectTitle"><input id="projectName" placeholder="제목을 입력하세요"></h1>
+                    </div>
+                </div>
+
+            </div>
+            <input type="file" style="display: none;" id="image">
+            <div class='ProjectIntroduction__ProjectIntroductionMain'>
+                <div class="ProjectIntroduction__ProjectIntroductionMainColumn">
+                    <button>사진을 선택하시려면 클릭하세요</button>
+                    <img class="ProjectIntroduction__ProjectCover" src="">
+                </div>
+                <div class="ProjectIntroduction__FundingStatuss">
+                    <div class="ProjectIntroduction__Metric">
+                        <div class="ProjectIntroduction__StatusTitle">목표인원</div>
+                        <div class="ProjectIntroduction__StatusValue">
+                            <input id="goal">
+                            <span class="ProjectIntroduction__Small">명</span>
+                        </div>
+                    </div>
+                    <div class="ProjectIntroduction__Metric">
+                        <div class="ProjectIntroduction__StatusTitle">마감날짜</div>
+                        <div class="ProjectIntroduction__StatusValue">
+                            <input type="date" id="endDate">
+                            <span class="ProjectIntroduction__Small">일</span>
+                        </div>
+                    </div>
+                    <div class="ProjectIntroduction__Metric">
+                        <div class="ProjectIntroduction__StatusTitle">후원금액</div>
+                        <div class="ProjectIntroduction__StatusValue">
+                            <input id="price">
+                            <span class="ProjectIntroduction__Small">원</span>
+                        </div>
+                    </div>
+                    <div class="FundingInformation">
+                        <div class="FundingInformation__FundingInformationInner">
+
+                            <div>펀딩 안내사항</div>
+                            <span>목표인원이 다 채워져야 프로젝트가 진행됩니다.<br>목표인원을 넘길경우 마감날짜에 결제됩니다.</span>
+                        </div>
+                    </div>
+                    <div class="ProjectIntroduction__ProjectButtons-sc-1o2ojgb-19 fHOYOE">
+                        <div class="ProjectIntroduction__ProjectButtonsInner-sc-1o2ojgb-20 frPGIq">
+                            <div class="ProjectIntroduction__PrimaryButton-sc-1o2ojgb-21 lcgtza">
+                                <button class="Button-sc-1x93b2b-0 KCBYB" onclick="createProject()">프로젝트 만들기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
